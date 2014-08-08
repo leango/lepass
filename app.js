@@ -36,5 +36,7 @@ app.use(session({
 var passlock = require('passlock');
 passlock.initialize(settings);
 app.use(passlock.router);
-
+app.use(function(req, res, next) {
+  res.end();
+});
 module.exports = app;
