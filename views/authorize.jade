@@ -4,15 +4,15 @@ block content
   div.row
     col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3
       panel.panel-default
-        panel-heading Authorization
+        panel-heading 授权
         panel-body
           form(action=action, method="POST", autocomplete="off")
             input(type="hidden", name="_csrf", value=_csrf)
             input(type="hidden", name="transaction_id" value=transactionID)
             div.panel.panel-warn
-              p The application <i>#{client.name}</i> is requesting access to your account
-              p Do you approve ?
+              p 应用程序 <i>#{client.name}</i> 请求访问您的账户
+              p 是否授权 ?
             if error
               div.alert.alert-warning #{error}
-            input(type="submit", class="btn btn-primary btn-block", value="Accpet")
-            input(type="submit", class="btn btn-secondary btn-block", value="Deny", name="cancel")
+            input(type="submit", class="btn btn-primary btn-block", value="同意")
+            input(type="submit", class="btn btn-secondary btn-block", value="拒绝", name="cancel")

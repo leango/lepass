@@ -1,15 +1,15 @@
 extend ./layout
 
 block content
-  p This link has expired. Please enter your email below to send the activation link again.
+  p 链接已失效，请输入信息重新发送激活邮件。
   div.panel.panel-default
-    div.panel-heading Resend verification email
+    div.panel-heading 重新发送激活邮件
     div.panel-body
       form(action="/signup/resend-verification", method="POST", autocomplete="off")
         input(type="hidden", name="_csrf", value=_csrf)
         div.form-group
-          label(for="email") Email
-          input.form-control(type="email", id="email", name="email", placeholder="Your email")
+          label(for="email") 邮箱
+          input.form-control(type="email", id="email", name="email", placeholder="请输入您的邮箱")
         if error
           div.alert.alert-warning #{error}
-        input(type="submit", class="btn btn-primary", value="Submit")
+        input(type="submit", class="btn btn-primary", value="发送邮件")
