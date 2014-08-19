@@ -7,8 +7,7 @@ var session = require('express-session');
 var engines = require('consolidate');
 
 
-var settings = require('boot-settings')(
-  path.join(path.dirname(require.resolve('lepass-settings')), 'settings'));
+var settings = require('lepass-settings');
 console.log(settings);
 var app = express();
 
