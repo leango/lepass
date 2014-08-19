@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var extend = require('extend');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
@@ -26,12 +27,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // setup session store
 var SessionStore = require(settings.app.sessionStore)(session);
 var sessionStore = new SessionStore(settings.app.sessionStoreSetting);
-app.use(session({
+app.use(session(extend({
   resave: false,
   saveUninitialized: true,
-  secret: settings.app.cookieSecret,
   store: sessionStore
-}));
+}, settings.app.sessionSettings)));
 
 var passlock = require('passlock');
 passlock.initialize(settings);
