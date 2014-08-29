@@ -17,25 +17,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.engine('jade', engines.jade);
 
-app.use(settings._applogger);
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser(settings.app.cookieSecret));
-app.use(express.static(path.join(__dirname, 'public')));
-
-// setup session store
-var SessionStore = require(settings.app.sessionStore)(session);
-var sessionStore = new SessionStore(settings.app.sessionStoreSetting);
-app.use(session(extend({
-  resave: false,
-  saveUninitialized: true,
-  store: sessionStore
-}, settings.app.sessionSettings)));
-
-var passlock = require('passlock');
-passlock.initialize(settings);
-app.use(passlock.router);
-app.use(function(req, res, next) {
-  res.end();
-});
 module.exports = app;
+
+var router = require('require-routes')('routes');
+app.use(router);
+app.set('routeTable', router.routeTable);
