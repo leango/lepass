@@ -15,7 +15,7 @@
     "cookie-parser": "^1.3.2",
     "express": "^4.7.2",
     "express-session": "^1.7.2",
-    "lepass-settings": "xdfcn/lepass-settings",
+    "lepass-settings": "leango/lepass-settings",
     "extend": "^1.3.0",
     "jade": "^1.5.0",
     "log4js": "^0.6.16",
